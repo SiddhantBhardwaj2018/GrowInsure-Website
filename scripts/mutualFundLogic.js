@@ -1,532 +1,629 @@
-const isNotNumeric = (value) => {
-  return /^[+-]?\d+(\.\d+)?$/.test(value);
-};
-
-const toFixed = (x) => {
-  if (Math.abs(x) < 1.0) {
-    var e = parseInt(x.toString().split("e-")[1]);
-    if (e) {
-      x *= Math.pow(10, e - 1);
-      x = "0." + new Array(e).join("0") + x.toString().substring(2);
+(function (_0x32a687, _0x521186) {
+  const _0x16593c = _0x125d,
+    _0xaf176f = _0x32a687();
+  while (!![]) {
+    try {
+      const _0x3dbdd8 =
+        parseInt(_0x16593c(0x87)) / 0x1 +
+        parseInt(_0x16593c(0x83)) / 0x2 +
+        parseInt(_0x16593c(0x8e)) / 0x3 +
+        (parseInt(_0x16593c(0x76)) / 0x4) * (-parseInt(_0x16593c(0x7d)) / 0x5) +
+        (-parseInt(_0x16593c(0x77)) / 0x6) *
+          (-parseInt(_0x16593c(0x8d)) / 0x7) +
+        (-parseInt(_0x16593c(0x8a)) / 0x8) *
+          (-parseInt(_0x16593c(0x78)) / 0x9) +
+        -parseInt(_0x16593c(0x75)) / 0xa;
+      if (_0x3dbdd8 === _0x521186) break;
+      else _0xaf176f["push"](_0xaf176f["shift"]());
+    } catch (_0x54188c) {
+      _0xaf176f["push"](_0xaf176f["shift"]());
     }
-  } else {
-    var e = parseInt(x.toString().split("+")[1]);
-    if (e > 20) {
-      e -= 20;
-      x /= Math.pow(10, e);
-      x += new Array(e + 1).join("0");
-    }
   }
-  return x;
-};
-
-const calculateFV = (rate, nper, pmt, pv) => {
-  if (rate > 0) {
-    let fv =
-      pv * Math.pow(1 + rate, nper) +
-      pmt * ((Math.pow(1 + rate, nper) - 1) / rate);
-    return fv;
-  } else {
-    let fv = pv + pmt * nper;
-    return fv;
-  }
-};
-
-const calculatePv = (rate, nper, pmt, fv = 0) => {
-  if (rate === 0) {
-    return fv + pmt * nper;
-  } else {
-    let pv =
-      pmt * ((1 - Math.pow(1 + rate, -nper)) / rate) +
-      fv / Math.pow(1 + rate, nper);
-    return pv;
-  }
-};
-
-const calculateExcelPmt = (rate, nper, pv, fv = 0) => {
-  if (nper === 0) {
-    return 0;
-  } else if (rate === 0) {
-    return -(pv + fv) / nper;
-  } else {
-    var pmt = (rate * pv) / (1 - Math.pow(1 + rate, -nper));
-    return pmt;
-  }
-};
-
-const calculatePmt = (rate, nper, pv, fv = 0) => {
-  if (nper === 0) {
-    return 0;
-  } else if (rate === 0) {
-    return -(pv + fv) / nper;
-  } else {
-    var pmt = (rate * (pv + fv)) / (Math.pow(1 + rate, nper) - 1);
-    return pmt;
-  }
-};
-
-const calculateGoalInvestBtn = (
-  currentAge,
-  destinationAge,
-  corpus,
-  rate,
-  inflation,
-  amountInvest
-) => {
-  let futureCost = Math.round(
-    calculateFV(inflation, destinationAge - currentAge, 0, corpus)
+})(_0x1f67, 0x9b623);
+function _0x125d(_0x590c8a, _0x4866eb) {
+  const _0x1f67dd = _0x1f67();
+  return (
+    (_0x125d = function (_0x125dae, _0x522d78) {
+      _0x125dae = _0x125dae - 0x6f;
+      let _0x5f4abd = _0x1f67dd[_0x125dae];
+      return _0x5f4abd;
+    }),
+    _0x125d(_0x590c8a, _0x4866eb)
   );
-  let investAppAmt = Math.round(
-    calculateFV(rate, destinationAge - currentAge, 0, amountInvest)
-  );
-  let deficitCorpus = futureCost - investAppAmt;
-  let lumpSumAmt = Math.round(
-    calculatePv(rate, destinationAge - currentAge, 0, deficitCorpus)
-  );
-  let monthlyInvestReqd = Math.round(
-    calculatePmt(
-      rate / 12,
-      (destinationAge - currentAge) * 12,
-      0,
-      deficitCorpus
-    )
-  );
-  return {
-    futureCost,
-    investAppAmt,
-    deficitCorpus,
-    lumpSumAmt,
-    monthlyInvestReqd,
-  };
-};
-
-const calculateRetirementGoal = (
-  currentAge,
-  retirementAge,
-  inflation,
-  monthlyExpense,
-  preRetirementReturn,
-  postRetirementReturn,
-  lifeExpectancy
-) => {
-  let monthlyRequirementAtRetirement = calculateFV(
-    inflation,
-    retirementAge - currentAge,
-    0,
-    monthlyExpense
-  );
-  let corpusAtRetirement = calculatePv(
-    postRetirementReturn / 12,
-    (lifeExpectancy - retirementAge) * 12,
-    monthlyRequirementAtRetirement
-  );
-  let monthlySIPAmtForInvestment = calculatePmt(
-    preRetirementReturn / 12,
-    (retirementAge - currentAge) * 12,
-    0,
-    corpusAtRetirement
-  );
-  return {
-    monthlyRequirementAtRetirement,
-    corpusAtRetirement,
-    monthlySIPAmtForInvestment,
-  };
-};
-
-const calculateSIPReturn = (
-  rate,
-  principal,
-  years,
-  step_up = 0,
-  inflation = 0,
-  lump_sum = false
-) => {
-  let result = 0;
-  if (!lump_sum) {
-    let month = years * 12;
-    let monthlyReturn = 0;
-    for (i = 0; i < month; i++) {
-      monthlyReturn =
-        (principal + (i > 12 ? step_up : 0) + monthlyReturn) *
-        (1 + (rate - inflation) / 12);
-    }
-    result = monthlyReturn;
-  } else {
-    result = principal * (1 + (rate - inflation)) ** years;
-  }
-  return result;
-};
-
-const calculateTotalReturnWithLumpSumAndSIP = (
-  initial_lumpsum,
-  principal,
-  rate,
-  years,
-  inflation = 0
-) => {
-  return calculateFV(
-    (rate - inflation) / 12,
-    years * 12,
-    principal,
-    initial_lumpsum
-  );
-};
-
-const calculateRequiredSipAmt = (
-  currentAge,
-  retirementAge,
-  currentRate,
-  inflation,
-  monthlyExpense,
-  assumedFutureReturn,
-  assumedFutureInflation,
-  residualAmt
-) => {
-  let amountReqdMonthly = calculateFV(
-    inflation,
-    retirementAge - currentAge,
-    0,
-    monthlyExpense
-  );
-  let reqdCapital = calculatePv(
-    (assumedFutureReturn - assumedFutureInflation) / 12,
-    12 * (90 - retirementAge),
-    amountReqdMonthly,
-    residualAmt
-  );
-  let reqdSIPAmt = calculatePmt(
-    (currentRate - inflation) / 12,
-    12 * (retirementAge - currentAge),
-    0,
-    reqdCapital
-  );
-  return { amountReqdMonthly, reqdCapital, reqdSIPAmt };
-};
-
-const calculateDifferentialReturnsByAge = (
-  currentAge,
-  retirementAge,
-  corpus,
-  rate,
-  inflation = 0
-) => {
-  let currentYr = calculatePmt(
-    (rate - inflation) / 12,
-    (retirementAge - currentAge) * 12,
-    0,
-    corpus
-  );
-  let prevTenYr = calculatePmt(
-    (rate - inflation) / 12,
-    (retirementAge - (currentAge - 10)) * 12,
-    0,
-    corpus
-  );
-  let nextTenYr = calculatePmt(
-    (rate - inflation) / 12,
-    (retirementAge - (currentAge + 10)) * 12,
-    0,
-    corpus
-  );
-  return { prevTenYr, currentYr, nextTenYr };
-};
-
-const calculateRetirementPortfolio = (
-  ppfAmt,
-  ppfRate,
-  pfAmt,
-  pfRate,
-  postalAmt,
-  postalRate,
-  bankAmt,
-  bankRate,
-  cdAmt,
-  cdRate,
-  insureAmt,
-  insureRate,
-  equityAmt,
-  equityRate,
-  debtAmt,
-  debtRate,
-  sipAmt,
-  sipRate,
-  rdAmt,
-  rdRate,
-  currentAge,
-  swpRate,
-  retirementAge,
-  inflationRate
-) => {
-  let finalVal = 0;
-  let finalSWP = 0;
-  let retirementTracker = {};
-  for (let i = 0; i < retirementAge - currentAge; i++) {
-    if (i == 0) {
-      retirementTracker["ppf"] = [
-        calculateFV(ppfRate - inflationRate, 1, 0, ppfAmt),
-      ];
-      retirementTracker["pf"] = [
-        calculateFV(pfRate - inflationRate, 1, 0, pfAmt),
-      ];
-      retirementTracker["postal"] = [
-        calculateFV(postalRate - inflationRate, 1, 0, postalAmt),
-      ];
-      retirementTracker["bank"] = [
-        calculateFV(bankRate - inflationRate, 1, 0, bankAmt),
-      ];
-      retirementTracker["cd"] = [
-        calculateFV(cdRate - inflationRate, 1, 0, cdAmt),
-      ];
-      retirementTracker["insure"] = [
-        calculateFV(insureRate - inflationRate, 1, 0, insureAmt),
-      ];
-      retirementTracker["equity"] = [
-        calculateFV(equityRate - inflationRate, 1, 0, equityAmt),
-      ];
-      retirementTracker["debt"] = [
-        calculateFV(debtRate - inflationRate, 1, 0, debtAmt),
-      ];
-      retirementTracker["sip"] = [
-        calculateFV((sipRate - inflationRate) / 12, (i + 1) * 12, sipAmt, 0),
-      ];
-      retirementTracker["rd"] = [
-        calculateFV((rdRate - inflationRate) / 12, (i + 1) * 12, rdAmt, 0),
-      ];
+}
+const isNotNumeric = (_0x4353ca) => {
+    const _0x35891d = _0x125d;
+    return /^[+-]?\d+(\.\d+)?$/[_0x35891d(0x80)](_0x4353ca);
+  },
+  toFixed = (_0x2747b9) => {
+    const _0x55920e = _0x125d;
+    if (Math[_0x55920e(0x8b)](_0x2747b9) < 0x1) {
+      var _0x32d8b6 = parseInt(
+        _0x2747b9[_0x55920e(0x79)]()["split"]("e-")[0x1]
+      );
+      _0x32d8b6 &&
+        ((_0x2747b9 *= Math[_0x55920e(0x73)](0xa, _0x32d8b6 - 0x1)),
+        (_0x2747b9 =
+          "0." +
+          new Array(_0x32d8b6)[_0x55920e(0x89)]("0") +
+          _0x2747b9["toString"]()[_0x55920e(0x7e)](0x2)));
     } else {
-      retirementTracker["ppf"].push(
-        calculateFV(
-          ppfRate - inflationRate,
-          1,
-          0,
-          retirementTracker["ppf"][i - 1]
-        )
+      var _0x32d8b6 = parseInt(
+        _0x2747b9[_0x55920e(0x79)]()[_0x55920e(0x84)]("+")[0x1]
       );
-      retirementTracker["pf"].push(
-        calculateFV(
-          pfRate - inflationRate,
-          1,
-          0,
-          retirementTracker["pf"][i - 1]
-        )
-      );
-      retirementTracker["postal"].push(
-        calculateFV(
-          postalRate - inflationRate,
-          1,
-          0,
-          retirementTracker["postal"][i - 1]
-        )
-      );
-      retirementTracker["bank"].push(
-        calculateFV(
-          bankRate - inflationRate,
-          1,
-          0,
-          retirementTracker["bank"][i - 1]
-        )
-      );
-      retirementTracker["cd"].push(
-        calculateFV(
-          cdRate - inflationRate,
-          1,
-          0,
-          retirementTracker["cd"][i - 1]
-        )
-      );
-      retirementTracker["insure"].push(
-        calculateFV(
-          insureRate - inflationRate,
-          1,
-          0,
-          retirementTracker["insure"][i - 1]
-        )
-      );
-      retirementTracker["equity"].push(
-        calculateFV(
-          equityRate - inflationRate,
-          1,
-          0,
-          retirementTracker["equity"][i - 1]
-        )
-      );
-      retirementTracker["debt"].push(
-        calculateFV(
-          debtRate - inflationRate,
-          1,
-          0,
-          retirementTracker["debt"][i - 1]
-        )
-      );
-      retirementTracker["sip"].push(
-        calculateFV((sipRate - inflationRate) / 12, (i + 1) * 12, sipAmt, 0)
-      );
-      retirementTracker["rd"].push(
-        calculateFV((rdRate - inflationRate) / 12, (i + 1) * 12, rdAmt, 0)
-      );
+      _0x32d8b6 > 0x14 &&
+        ((_0x32d8b6 -= 0x14),
+        (_0x2747b9 /= Math[_0x55920e(0x73)](0xa, _0x32d8b6)),
+        (_0x2747b9 += new Array(_0x32d8b6 + 0x1)[_0x55920e(0x89)]("0")));
     }
-  }
-  for (let scheme in retirementTracker) {
-    finalVal += retirementTracker[scheme][retirementAge - currentAge - 1];
-  }
-  finalSWP = (swpRate * finalVal) / 12;
-  return { finalVal, finalSWP };
-};
-
-const distributorCommissionCalc = (sipAmt, sipRate, commissionRate, time) => {
-  let val = [];
-  for (let i = 0; i < time; i++) {
-    let info = {};
-    info["aum"] = calculateFV(sipRate / 12, (i + 1) * 12, sipAmt, 0);
-    info["commission"] = commissionRate * info["aum"];
-    val.push(info);
-  }
-  let dict = {};
-  let totalCommission = 0;
-  dict["val"] = val;
-  for (let info in val) {
-    totalCommission += val[info]["commission"];
-  }
-  dict["totalCommission"] = totalCommission;
-  return dict;
-};
-
-const diffBetweenInsuranceAndSIPCommission = (
-  investAmt,
-  avgInsureCommission,
-  capApprRate,
-  trail,
-  time
-) => {
-  let val = [];
-  for (let i = 0; i < time; i++) {
-    let info = {};
-    info["insurance_paid_amount"] = avgInsureCommission * investAmt;
-    if (i == 0) {
-      info["cap_appreciation"] = capApprRate * investAmt;
-      info["cumulative_value"] = investAmt + info["cap_appreciation"];
+    return _0x2747b9;
+  },
+  calculateFV = (_0x4aa898, _0x427543, _0x3ab232, _0x389dd7) => {
+    const _0x263242 = _0x125d;
+    if (_0x4aa898 > 0x0) {
+      let _0x1cf2f0 =
+        _0x389dd7 * Math[_0x263242(0x73)](0x1 + _0x4aa898, _0x427543) +
+        _0x3ab232 *
+          ((Math[_0x263242(0x73)](0x1 + _0x4aa898, _0x427543) - 0x1) /
+            _0x4aa898);
+      return _0x1cf2f0;
     } else {
-      info["cap_appreciation"] =
-        (investAmt + val[i - 1]["cumulative_value"]) * capApprRate;
-      info["cumulative_value"] =
-        val[i - 1]["cumulative_value"] + investAmt + info["cap_appreciation"];
+      let _0x163364 = _0x389dd7 + _0x3ab232 * _0x427543;
+      return _0x163364;
     }
-    info["upfront_tail"] = trail * info["cumulative_value"];
-    val.push(info);
-  }
-  let totalInsureCommission = 0;
-  let totalUpfrontTrail = 0;
-  for (let i = 0; i < val.length; i++) {
-    console.log(val[i]);
-    totalInsureCommission += val[i]["insurance_paid_amount"];
-    totalUpfrontTrail += val[i]["upfront_tail"];
-  }
-  return { totalInsureCommission, totalUpfrontTrail };
-};
-
-const revenueModelSIPAndOneTimeBookSize = (
-  sipBookSize,
-  investRate,
-  commissionRate,
-  equityAum,
-  time
-) => {
-  let sipBookSizeFutureValue = 0;
-  let sipBookSizeCommission = 0;
-  let equityAUMFutureValue = 0;
-  let equityAUMCommission = 0;
-  let grossCommission = 0;
-  for (let i = 0; i < time; i++) {
-    sipBookSizeFutureValue = calculateFV(
-      investRate / 12,
-      (i + 1) * 12,
-      sipBookSize,
-      0
+  },
+  calculatePv = (_0x563b8a, _0x7f0a40, _0x1e3598, _0x447541 = 0x0) => {
+    const _0x8e8fe7 = _0x125d;
+    if (_0x563b8a === 0x0) return _0x447541 + _0x1e3598 * _0x7f0a40;
+    else {
+      let _0x1cc20 =
+        _0x1e3598 *
+          ((0x1 - Math[_0x8e8fe7(0x73)](0x1 + _0x563b8a, -_0x7f0a40)) /
+            _0x563b8a) +
+        _0x447541 / Math["pow"](0x1 + _0x563b8a, _0x7f0a40);
+      return _0x1cc20;
+    }
+  },
+  calculateExcelPmt = (_0xe3c433, _0x148581, _0x51e957, _0x26ef29 = 0x0) => {
+    const _0x2e3437 = _0x125d;
+    if (_0x148581 === 0x0) return 0x0;
+    else {
+      if (_0xe3c433 === 0x0) return -(_0x51e957 + _0x26ef29) / _0x148581;
+      else {
+        var _0x326986 =
+          (_0xe3c433 * _0x51e957) /
+          (0x1 - Math[_0x2e3437(0x73)](0x1 + _0xe3c433, -_0x148581));
+        return _0x326986;
+      }
+    }
+  },
+  calculatePmt = (_0xe0d0f1, _0x4e42fd, _0x36a7f2, _0x263dd8 = 0x0) => {
+    if (_0x4e42fd === 0x0) return 0x0;
+    else {
+      if (_0xe0d0f1 === 0x0) return -(_0x36a7f2 + _0x263dd8) / _0x4e42fd;
+      else {
+        var _0x206900 =
+          (_0xe0d0f1 * (_0x36a7f2 + _0x263dd8)) /
+          (Math["pow"](0x1 + _0xe0d0f1, _0x4e42fd) - 0x1);
+        return _0x206900;
+      }
+    }
+  },
+  calculateGoalInvestBtn = (
+    _0x28ef6f,
+    _0x478e0c,
+    _0x15476d,
+    _0x43d357,
+    _0x1ebd7e,
+    _0x125372
+  ) => {
+    const _0x5bbc60 = _0x125d;
+    let _0x4b8a9f = Math[_0x5bbc60(0x6f)](
+        calculateFV(_0x1ebd7e, _0x478e0c - _0x28ef6f, 0x0, _0x15476d)
+      ),
+      _0x180f5a = Math[_0x5bbc60(0x6f)](
+        calculateFV(_0x43d357, _0x478e0c - _0x28ef6f, 0x0, _0x125372)
+      ),
+      _0x2eb962 = _0x4b8a9f - _0x180f5a,
+      _0x530b4d = Math["round"](
+        calculatePv(_0x43d357, _0x478e0c - _0x28ef6f, 0x0, _0x2eb962)
+      ),
+      _0x18ad28 = Math[_0x5bbc60(0x6f)](
+        calculatePmt(
+          _0x43d357 / 0xc,
+          (_0x478e0c - _0x28ef6f) * 0xc,
+          0x0,
+          _0x2eb962
+        )
+      );
+    return {
+      futureCost: _0x4b8a9f,
+      investAppAmt: _0x180f5a,
+      deficitCorpus: _0x2eb962,
+      lumpSumAmt: _0x530b4d,
+      monthlyInvestReqd: _0x18ad28,
+    };
+  },
+  calculateRetirementGoal = (
+    _0x4eb790,
+    _0x2d2b99,
+    _0x30c52c,
+    _0x39f6f5,
+    _0x5c5638,
+    _0x2865d8,
+    _0x34ed3e
+  ) => {
+    let _0xa2387b = calculateFV(
+        _0x30c52c,
+        _0x2d2b99 - _0x4eb790,
+        0x0,
+        _0x39f6f5
+      ),
+      _0x5bcd46 = calculatePv(
+        _0x2865d8 / 0xc,
+        (_0x34ed3e - _0x2d2b99) * 0xc,
+        _0xa2387b
+      ),
+      _0x3b102e = calculatePmt(
+        _0x5c5638 / 0xc,
+        (_0x2d2b99 - _0x4eb790) * 0xc,
+        0x0,
+        _0x5bcd46
+      );
+    return {
+      monthlyRequirementAtRetirement: _0xa2387b,
+      corpusAtRetirement: _0x5bcd46,
+      monthlySIPAmtForInvestment: _0x3b102e,
+    };
+  },
+  calculateSIPReturn = (
+    _0x59cdd4,
+    _0x17d35d,
+    _0x5bea40,
+    _0x40011a = 0x0,
+    _0x386460 = 0x0,
+    _0x45498e = ![]
+  ) => {
+    let _0x23f052 = 0x0;
+    if (!_0x45498e) {
+      let _0x1aa9dd = _0x5bea40 * 0xc,
+        _0x3c7016 = 0x0;
+      for (i = 0x0; i < _0x1aa9dd; i++) {
+        _0x3c7016 =
+          (_0x17d35d + (i > 0xc ? _0x40011a : 0x0) + _0x3c7016) *
+          (0x1 + (_0x59cdd4 - _0x386460) / 0xc);
+      }
+      _0x23f052 = _0x3c7016;
+    } else _0x23f052 = _0x17d35d * (0x1 + (_0x59cdd4 - _0x386460)) ** _0x5bea40;
+    return _0x23f052;
+  },
+  calculateTotalReturnWithLumpSumAndSIP = (
+    _0x3d8e6f,
+    _0x95d785,
+    _0x390781,
+    _0x1f1810,
+    _0x16e67f = 0x0
+  ) => {
+    return calculateFV(
+      (_0x390781 - _0x16e67f) / 0xc,
+      _0x1f1810 * 0xc,
+      _0x95d785,
+      _0x3d8e6f
     );
-    sipBookSizeCommission = commissionRate * sipBookSizeFutureValue;
-    equityAUMFutureValue = calculateFV(investRate, i + 1, 0, equityAum);
-    equityAUMCommission = commissionRate * equityAUMFutureValue;
-    grossCommission += sipBookSizeCommission + equityAUMCommission;
-  }
-  return grossCommission;
-};
-
-const calculateEMIVersusSIP = (
-  houseValue,
-  selfFunding,
-  loanRate,
-  loanPeriod,
-  housingInflation,
-  monthlyRent = (0.03 / 12) * houseValue,
-  sipGrowthRate = 0.12
-) => {
-  let bankFunding = Math.round(houseValue - selfFunding);
-  let emiAmt = Math.round(
-    calculateExcelPmt(loanRate / 12, loanPeriod * 12, bankFunding)
-  );
-  let totalLoanPayment = Math.round(12 * emiAmt * loanPeriod);
-  let loanInterestPaid = Math.round(totalLoanPayment - bankFunding);
-  let emiPaymentBalance = Math.round(emiAmt - monthlyRent);
-  let sipInvestFV = Math.round(
-    calculateFV(sipGrowthRate / 12, loanPeriod * 12, emiPaymentBalance, 0)
-  );
-  let houseCostFV = Math.round(
-    calculateFV(housingInflation, loanPeriod, 0, houseValue)
-  );
-  let profitSIPInvest = Math.round(sipInvestFV - houseCostFV);
-  return {
-    bankFunding,
-    emiAmt,
-    totalLoanPayment,
-    loanInterestPaid,
-    emiPaymentBalance,
-    sipInvestFV,
-    houseCostFV,
-    profitSIPInvest,
-    monthlyRent,
+  },
+  calculateRequiredSipAmt = (
+    _0x9bfa1f,
+    _0x1cd01e,
+    _0x25e88b,
+    _0x590630,
+    _0x360a83,
+    _0x2231d9,
+    _0x253f7a,
+    _0x5def4f
+  ) => {
+    let _0x4739ad = calculateFV(
+        _0x590630,
+        _0x1cd01e - _0x9bfa1f,
+        0x0,
+        _0x360a83
+      ),
+      _0x3d58a4 = calculatePv(
+        (_0x2231d9 - _0x253f7a) / 0xc,
+        0xc * (0x5a - _0x1cd01e),
+        _0x4739ad,
+        _0x5def4f
+      ),
+      _0x41a05b = calculatePmt(
+        (_0x25e88b - _0x590630) / 0xc,
+        0xc * (_0x1cd01e - _0x9bfa1f),
+        0x0,
+        _0x3d58a4
+      );
+    return {
+      amountReqdMonthly: _0x4739ad,
+      reqdCapital: _0x3d58a4,
+      reqdSIPAmt: _0x41a05b,
+    };
+  },
+  calculateDifferentialReturnsByAge = (
+    _0x523ad9,
+    _0x2cb9e7,
+    _0x52de40,
+    _0x1fc791,
+    _0x7848ad = 0x0
+  ) => {
+    let _0x33c6e0 = calculatePmt(
+        (_0x1fc791 - _0x7848ad) / 0xc,
+        (_0x2cb9e7 - _0x523ad9) * 0xc,
+        0x0,
+        _0x52de40
+      ),
+      _0x9668f8 = calculatePmt(
+        (_0x1fc791 - _0x7848ad) / 0xc,
+        (_0x2cb9e7 - (_0x523ad9 - 0xa)) * 0xc,
+        0x0,
+        _0x52de40
+      ),
+      _0x2ebac1 = calculatePmt(
+        (_0x1fc791 - _0x7848ad) / 0xc,
+        (_0x2cb9e7 - (_0x523ad9 + 0xa)) * 0xc,
+        0x0,
+        _0x52de40
+      );
+    return { prevTenYr: _0x9668f8, currentYr: _0x33c6e0, nextTenYr: _0x2ebac1 };
+  },
+  calculateRetirementPortfolio = (
+    _0x3fe912,
+    _0xe1478a,
+    _0x22011b,
+    _0x44c83d,
+    _0x19e18e,
+    _0x5eceba,
+    _0x77bd60,
+    _0x1809d2,
+    _0x198ad8,
+    _0x407032,
+    _0x243471,
+    _0x7be2c8,
+    _0x58ec14,
+    _0x51cfdb,
+    _0xa136fd,
+    _0x23e7c2,
+    _0x4bb394,
+    _0x1e70cf,
+    _0x2a560f,
+    _0x155c38,
+    _0x10e5eb,
+    _0x261f53,
+    _0x569397,
+    _0x78f3f8
+  ) => {
+    const _0x577808 = _0x125d;
+    let _0x208a60 = 0x0,
+      _0x325dae = 0x0,
+      _0x5d67f0 = {};
+    for (let _0x1a15cc = 0x0; _0x1a15cc < _0x569397 - _0x10e5eb; _0x1a15cc++) {
+      _0x1a15cc == 0x0
+        ? ((_0x5d67f0[_0x577808(0x72)] = [
+            calculateFV(_0xe1478a - _0x78f3f8, 0x1, 0x0, _0x3fe912),
+          ]),
+          (_0x5d67f0["pf"] = [
+            calculateFV(_0x44c83d - _0x78f3f8, 0x1, 0x0, _0x22011b),
+          ]),
+          (_0x5d67f0[_0x577808(0x74)] = [
+            calculateFV(_0x5eceba - _0x78f3f8, 0x1, 0x0, _0x19e18e),
+          ]),
+          (_0x5d67f0[_0x577808(0x70)] = [
+            calculateFV(_0x1809d2 - _0x78f3f8, 0x1, 0x0, _0x77bd60),
+          ]),
+          (_0x5d67f0["cd"] = [
+            calculateFV(_0x407032 - _0x78f3f8, 0x1, 0x0, _0x198ad8),
+          ]),
+          (_0x5d67f0[_0x577808(0x82)] = [
+            calculateFV(_0x7be2c8 - _0x78f3f8, 0x1, 0x0, _0x243471),
+          ]),
+          (_0x5d67f0[_0x577808(0x8c)] = [
+            calculateFV(_0x51cfdb - _0x78f3f8, 0x1, 0x0, _0x58ec14),
+          ]),
+          (_0x5d67f0[_0x577808(0x7a)] = [
+            calculateFV(_0x23e7c2 - _0x78f3f8, 0x1, 0x0, _0xa136fd),
+          ]),
+          (_0x5d67f0[_0x577808(0x88)] = [
+            calculateFV(
+              (_0x1e70cf - _0x78f3f8) / 0xc,
+              (_0x1a15cc + 0x1) * 0xc,
+              _0x4bb394,
+              0x0
+            ),
+          ]),
+          (_0x5d67f0["rd"] = [
+            calculateFV(
+              (_0x155c38 - _0x78f3f8) / 0xc,
+              (_0x1a15cc + 0x1) * 0xc,
+              _0x2a560f,
+              0x0
+            ),
+          ]))
+        : (_0x5d67f0[_0x577808(0x72)][_0x577808(0x86)](
+            calculateFV(
+              _0xe1478a - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0[_0x577808(0x72)][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0["pf"][_0x577808(0x86)](
+            calculateFV(
+              _0x44c83d - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0["pf"][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0[_0x577808(0x74)][_0x577808(0x86)](
+            calculateFV(
+              _0x5eceba - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0["postal"][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0[_0x577808(0x70)][_0x577808(0x86)](
+            calculateFV(
+              _0x1809d2 - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0[_0x577808(0x70)][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0["cd"][_0x577808(0x86)](
+            calculateFV(
+              _0x407032 - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0["cd"][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0["insure"][_0x577808(0x86)](
+            calculateFV(
+              _0x7be2c8 - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0[_0x577808(0x82)][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0[_0x577808(0x8c)][_0x577808(0x86)](
+            calculateFV(
+              _0x51cfdb - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0[_0x577808(0x8c)][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0[_0x577808(0x7a)][_0x577808(0x86)](
+            calculateFV(
+              _0x23e7c2 - _0x78f3f8,
+              0x1,
+              0x0,
+              _0x5d67f0[_0x577808(0x7a)][_0x1a15cc - 0x1]
+            )
+          ),
+          _0x5d67f0["sip"][_0x577808(0x86)](
+            calculateFV(
+              (_0x1e70cf - _0x78f3f8) / 0xc,
+              (_0x1a15cc + 0x1) * 0xc,
+              _0x4bb394,
+              0x0
+            )
+          ),
+          _0x5d67f0["rd"]["push"](
+            calculateFV(
+              (_0x155c38 - _0x78f3f8) / 0xc,
+              (_0x1a15cc + 0x1) * 0xc,
+              _0x2a560f,
+              0x0
+            )
+          ));
+    }
+    for (let _0x40812c in _0x5d67f0) {
+      _0x208a60 += _0x5d67f0[_0x40812c][_0x569397 - _0x10e5eb - 0x1];
+    }
+    return (
+      (_0x325dae = (_0x261f53 * _0x208a60) / 0xc),
+      { finalVal: _0x208a60, finalSWP: _0x325dae }
+    );
+  },
+  distributorCommissionCalc = (_0x3c9cb1, _0x25eef0, _0x3f9930, _0x592106) => {
+    const _0x28688b = _0x125d;
+    let _0x2fc247 = [];
+    for (let _0x1d19c1 = 0x0; _0x1d19c1 < _0x592106; _0x1d19c1++) {
+      let _0x4135f2 = {};
+      (_0x4135f2[_0x28688b(0x90)] = calculateFV(
+        _0x25eef0 / 0xc,
+        (_0x1d19c1 + 0x1) * 0xc,
+        _0x3c9cb1,
+        0x0
+      )),
+        (_0x4135f2[_0x28688b(0x7c)] = _0x3f9930 * _0x4135f2["aum"]),
+        _0x2fc247[_0x28688b(0x86)](_0x4135f2);
+    }
+    let _0x52ca2a = {},
+      _0x1efb7e = 0x0;
+    _0x52ca2a[_0x28688b(0x8f)] = _0x2fc247;
+    for (let _0x428c8e in _0x2fc247) {
+      _0x1efb7e += _0x2fc247[_0x428c8e]["commission"];
+    }
+    return (_0x52ca2a["totalCommission"] = _0x1efb7e), _0x52ca2a;
+  },
+  diffBetweenInsuranceAndSIPCommission = (
+    _0x1eb50c,
+    _0x58d542,
+    _0x274dad,
+    _0x5aab53,
+    _0x1efddb
+  ) => {
+    const _0x3e663d = _0x125d;
+    let _0x2996fc = [];
+    for (let _0x27430f = 0x0; _0x27430f < _0x1efddb; _0x27430f++) {
+      let _0x2952f5 = {};
+      (_0x2952f5[_0x3e663d(0x71)] = _0x58d542 * _0x1eb50c),
+        _0x27430f == 0x0
+          ? ((_0x2952f5[_0x3e663d(0x7b)] = _0x274dad * _0x1eb50c),
+            (_0x2952f5[_0x3e663d(0x7f)] =
+              _0x1eb50c + _0x2952f5[_0x3e663d(0x7b)]))
+          : ((_0x2952f5[_0x3e663d(0x7b)] =
+              (_0x1eb50c + _0x2996fc[_0x27430f - 0x1]["cumulative_value"]) *
+              _0x274dad),
+            (_0x2952f5[_0x3e663d(0x7f)] =
+              _0x2996fc[_0x27430f - 0x1]["cumulative_value"] +
+              _0x1eb50c +
+              _0x2952f5[_0x3e663d(0x7b)])),
+        (_0x2952f5["upfront_tail"] = _0x5aab53 * _0x2952f5[_0x3e663d(0x7f)]),
+        _0x2996fc["push"](_0x2952f5);
+    }
+    let _0x849292 = 0x0,
+      _0x12f4e2 = 0x0;
+    for (
+      let _0x84cf5c = 0x0;
+      _0x84cf5c < _0x2996fc[_0x3e663d(0x85)];
+      _0x84cf5c++
+    ) {
+      console["log"](_0x2996fc[_0x84cf5c]),
+        (_0x849292 += _0x2996fc[_0x84cf5c][_0x3e663d(0x71)]),
+        (_0x12f4e2 += _0x2996fc[_0x84cf5c]["upfront_tail"]);
+    }
+    return { totalInsureCommission: _0x849292, totalUpfrontTrail: _0x12f4e2 };
+  },
+  revenueModelSIPAndOneTimeBookSize = (
+    _0x544f2e,
+    _0x275190,
+    _0x20ab83,
+    _0x2c9463,
+    _0x50cd51
+  ) => {
+    let _0x485f36 = 0x0,
+      _0xcc0636 = 0x0,
+      _0x23dd06 = 0x0,
+      _0x56bb6a = 0x0,
+      _0xd58e49 = 0x0;
+    for (let _0x7c64de = 0x0; _0x7c64de < _0x50cd51; _0x7c64de++) {
+      (_0x485f36 = calculateFV(
+        _0x275190 / 0xc,
+        (_0x7c64de + 0x1) * 0xc,
+        _0x544f2e,
+        0x0
+      )),
+        (_0xcc0636 = _0x20ab83 * _0x485f36),
+        (_0x23dd06 = calculateFV(_0x275190, _0x7c64de + 0x1, 0x0, _0x2c9463)),
+        (_0x56bb6a = _0x20ab83 * _0x23dd06),
+        (_0xd58e49 += _0xcc0636 + _0x56bb6a);
+    }
+    return _0xd58e49;
+  },
+  calculateEMIVersusSIP = (
+    _0x4ef616,
+    _0x15d50c,
+    _0x11a0c1,
+    _0x308043,
+    _0x2831e2,
+    _0x44e8cd = (0.03 / 0xc) * _0x4ef616,
+    _0x307b8e = 0.12
+  ) => {
+    const _0x227cd4 = _0x125d;
+    let _0x58912e = Math[_0x227cd4(0x6f)](_0x4ef616 - _0x15d50c),
+      _0x17abc5 = Math[_0x227cd4(0x6f)](
+        calculateExcelPmt(_0x11a0c1 / 0xc, _0x308043 * 0xc, _0x58912e)
+      ),
+      _0x1c90cb = Math[_0x227cd4(0x6f)](0xc * _0x17abc5 * _0x308043),
+      _0x1c8e23 = Math[_0x227cd4(0x6f)](_0x1c90cb - _0x58912e),
+      _0x28877e = Math["round"](_0x17abc5 - _0x44e8cd),
+      _0x292182 = Math["round"](
+        calculateFV(_0x307b8e / 0xc, _0x308043 * 0xc, _0x28877e, 0x0)
+      ),
+      _0x5bba53 = Math[_0x227cd4(0x6f)](
+        calculateFV(_0x2831e2, _0x308043, 0x0, _0x4ef616)
+      ),
+      _0x275cc3 = Math[_0x227cd4(0x6f)](_0x292182 - _0x5bba53);
+    return {
+      bankFunding: _0x58912e,
+      emiAmt: _0x17abc5,
+      totalLoanPayment: _0x1c90cb,
+      loanInterestPaid: _0x1c8e23,
+      emiPaymentBalance: _0x28877e,
+      sipInvestFV: _0x292182,
+      houseCostFV: _0x5bba53,
+      profitSIPInvest: _0x275cc3,
+      monthlyRent: _0x44e8cd,
+    };
+  },
+  humanLifeMethod = (_0x267803, _0x174f87, _0x5caf5c, _0x49b1fe) => {
+    const _0xed47e9 = _0x125d;
+    console[_0xed47e9(0x81)](0x1);
+    let _0x2ca39b = (0x1 + _0x174f87) / (0x1 + _0x5caf5c) - 0x1;
+    console[_0xed47e9(0x81)](_0x2ca39b);
+    let _0xdcf15b = calculatePv(_0x2ca39b, _0x49b1fe, _0x267803);
+    return { reqdCorpus: _0xdcf15b };
+  },
+  needBasedApproach = (
+    _0x1166e5,
+    _0x1af433,
+    _0x178d7f,
+    _0x4f6653,
+    _0x14c310,
+    _0x53d087,
+    _0x5b5742,
+    _0x1fc91c,
+    _0x57f5a9
+  ) => {
+    let { reqdCorpus: _0x16cc12 } = humanLifeMethod(
+        _0x1166e5,
+        _0x1af433,
+        _0x178d7f,
+        _0x4f6653
+      ),
+      _0x36a7a =
+        _0x16cc12 + _0x14c310 + _0x53d087 + _0x5b5742 - _0x1fc91c - _0x57f5a9;
+    return { reqdCorpus: _0x16cc12, additionReqdCorpus: _0x36a7a };
   };
-};
-
-const humanLifeMethod = (
-  currentIncome,
-  investGrowthRate,
-  incomeIncrementRate,
-  timePeriod
-) => {
-  console.log(1);
-  let adjustRateReturn = (1 + investGrowthRate) / (1 + incomeIncrementRate) - 1;
-  console.log(adjustRateReturn);
-  let reqdCorpus = calculatePv(adjustRateReturn, timePeriod, currentIncome);
-  return {
-    reqdCorpus,
+function _0x1f67() {
+  const _0x9841e3 = [
+    "1171846aKaLqC",
+    "split",
+    "length",
+    "push",
+    "1066370oJoeCA",
+    "sip",
+    "join",
+    "56HjeNLB",
+    "abs",
+    "equity",
+    "9919FtRgLq",
+    "1159482YaCHBX",
+    "val",
+    "aum",
+    "round",
+    "bank",
+    "insurance_paid_amount",
+    "ppf",
+    "pow",
+    "postal",
+    "11972910FeeZDl",
+    "36840GhfupR",
+    "762hPLqcs",
+    "1056222nDBvAX",
+    "toString",
+    "debt",
+    "cap_appreciation",
+    "commission",
+    "655jeENXh",
+    "substring",
+    "cumulative_value",
+    "test",
+    "log",
+    "insure",
+  ];
+  _0x1f67 = function () {
+    return _0x9841e3;
   };
-};
-
-const needBasedApproach = (
-  currentIncome,
-  investGrowthRate,
-  incomeIncrementRate,
-  timePeriod,
-  outstandingLoanAmt,
-  childEducationLiability,
-  incidentalMarriageLiability,
-  availableInsuranceDeduct,
-  investmentBalance
-) => {
-  let { reqdCorpus } = humanLifeMethod(
-    currentIncome,
-    investGrowthRate,
-    incomeIncrementRate,
-    timePeriod
-  );
-  let additionReqdCorpus =
-    reqdCorpus +
-    outstandingLoanAmt +
-    childEducationLiability +
-    incidentalMarriageLiability -
-    availableInsuranceDeduct -
-    investmentBalance;
-  return {
-    reqdCorpus,
-    additionReqdCorpus,
-  };
-};
+  return _0x1f67();
+}

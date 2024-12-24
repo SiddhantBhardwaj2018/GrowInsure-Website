@@ -1,490 +1,602 @@
-/** @format */
-
-let explainPara = document.getElementById("explainPara");
-let modalBtn = document.getElementById("modalBtn");
-
-const scrollToElement = (id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    const rect = element.getBoundingClientRect();
-    const offset = window.pageYOffset + rect.top - 100; // Adjusted offset
-    window.scrollTo({ top: offset, behavior: "smooth" });
+const _0x137ab4 = _0x37f9;
+(function (_0x1dd288, _0x1e896a) {
+  const _0x1a07bb = _0x37f9,
+    _0x3f505e = _0x1dd288();
+  while (!![]) {
+    try {
+      const _0x1847ed =
+        (parseInt(_0x1a07bb(0x202)) / 0x1) *
+          (-parseInt(_0x1a07bb(0x208)) / 0x2) +
+        (-parseInt(_0x1a07bb(0x1cf)) / 0x3) *
+          (-parseInt(_0x1a07bb(0x1f0)) / 0x4) +
+        -parseInt(_0x1a07bb(0x21f)) / 0x5 +
+        -parseInt(_0x1a07bb(0x1d0)) / 0x6 +
+        -parseInt(_0x1a07bb(0x1fc)) / 0x7 +
+        (parseInt(_0x1a07bb(0x1e2)) / 0x8) *
+          (-parseInt(_0x1a07bb(0x200)) / 0x9) +
+        parseInt(_0x1a07bb(0x217)) / 0xa;
+      if (_0x1847ed === _0x1e896a) break;
+      else _0x3f505e["push"](_0x3f505e["shift"]());
+    } catch (_0x5ba843) {
+      _0x3f505e["push"](_0x3f505e["shift"]());
+    }
+  }
+})(_0x5c45, 0x213c4);
+function _0x37f9(_0x1c06a2, _0xe859d7) {
+  const _0x5c4581 = _0x5c45();
+  return (
+    (_0x37f9 = function (_0x37f923, _0x5e5650) {
+      _0x37f923 = _0x37f923 - 0x1c3;
+      let _0x4a5115 = _0x5c4581[_0x37f923];
+      return _0x4a5115;
+    }),
+    _0x37f9(_0x1c06a2, _0xe859d7)
+  );
+}
+let explainPara = document[_0x137ab4(0x216)]("explainPara"),
+  modalBtn = document[_0x137ab4(0x216)]("modalBtn");
+const scrollToElement = (_0xbed98a) => {
+  const _0xd1a634 = _0x137ab4,
+    _0x56bc9c = document[_0xd1a634(0x216)](_0xbed98a);
+  if (_0x56bc9c) {
+    const _0xf03af1 = _0x56bc9c[_0xd1a634(0x1f9)](),
+      _0x5ce1d4 = window[_0xd1a634(0x1fe)] + _0xf03af1[_0xd1a634(0x210)] - 0x64;
+    window[_0xd1a634(0x212)]({ top: _0x5ce1d4, behavior: _0xd1a634(0x21c) });
   }
 };
-
-document.addEventListener("click", (e) => {
-  let id = e.target.id;
-  let principal;
-  let inflationRate;
-  let rateOfInterest;
-  let timePeriod;
-  let snapshotDiv;
-  let resultHeader;
-  let currentIncome;
-  let investGrowthRate;
-  let incomeIncrementRate;
-  let targetAmt;
-  switch (id) {
-    case "emiSipBtn":
-      e.preventDefault();
-      principal = document.getElementById("houseCost");
-      inflationRate = document.getElementById("inflationRate");
-      rateOfInterest = document.getElementById("loanRate");
-      timePeriod = document.getElementById("loanPeriod");
-      snapshotDiv = document.getElementById("snapshotDiv");
-      let personalFunding = document.getElementById("selfFunding");
+document["addEventListener"](_0x137ab4(0x1dd), (_0x1f3221) => {
+  const _0x30061e = _0x137ab4;
+  let _0x43a640 = _0x1f3221[_0x30061e(0x1d4)]["id"],
+    _0x570458,
+    _0x428430,
+    _0x424a61,
+    _0x15ff81,
+    _0x4bbbad,
+    _0x4bb145,
+    _0x34977d,
+    _0x3c2558,
+    _0x1d27f2,
+    _0x4fa127;
+  switch (_0x43a640) {
+    case _0x30061e(0x205):
+      _0x1f3221["preventDefault"](),
+        (_0x570458 = document["getElementById"](_0x30061e(0x1de))),
+        (_0x428430 = document[_0x30061e(0x216)](_0x30061e(0x1e5))),
+        (_0x424a61 = document[_0x30061e(0x216)]("loanRate")),
+        (_0x15ff81 = document["getElementById"](_0x30061e(0x211))),
+        (_0x4bbbad = document["getElementById"]("snapshotDiv"));
+      let _0x27007a = document["getElementById"](_0x30061e(0x1f8));
       if (
-        principal.value !== "" &&
-        inflationRate.value !== "" &&
-        rateOfInterest.value !== "" &&
-        timePeriod.value !== "" &&
-        personalFunding.value !== ""
+        _0x570458[_0x30061e(0x1db)] !== "" &&
+        _0x428430[_0x30061e(0x1db)] !== "" &&
+        _0x424a61[_0x30061e(0x1db)] !== "" &&
+        _0x15ff81[_0x30061e(0x1db)] !== "" &&
+        _0x27007a[_0x30061e(0x1db)] !== ""
       ) {
         if (
           !(
-            isNotNumeric(principal.value) &&
-            isNotNumeric(inflationRate.value) &&
-            isNotNumeric(rateOfInterest.value) &&
-            isNotNumeric(timePeriod.value) &&
-            isNotNumeric(personalFunding.value)
+            isNotNumeric(_0x570458[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x428430[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x424a61[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x15ff81[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x27007a[_0x30061e(0x1db)])
           )
-        ) {
-          explainPara.innerText =
-            "Please enter only numeric values for loan rate, loan period, housing cost, personal contribution and inflation rate to calculate SIP Versus Housing Return";
-          modalBtn.click();
-        } else {
+        )
+          (explainPara["innerText"] =
+            "Please\x20enter\x20only\x20numeric\x20values\x20for\x20loan\x20rate,\x20loan\x20period,\x20housing\x20cost,\x20personal\x20contribution\x20and\x20inflation\x20rate\x20to\x20calculate\x20SIP\x20Versus\x20Housing\x20Return"),
+            modalBtn[_0x30061e(0x1dd)]();
+        else {
           let {
-            bankFunding,
-            emiAmt,
-            totalLoanPayment,
-            loanInterestPaid,
-            emiPaymentBalance,
-            sipInvestFV,
-            houseCostFV,
-            profitSIPInvest,
-            monthlyRent,
+            bankFunding: _0x57fdac,
+            emiAmt: _0x4b6af1,
+            totalLoanPayment: _0x2953e4,
+            loanInterestPaid: _0x24f3ba,
+            emiPaymentBalance: _0x2084ff,
+            sipInvestFV: _0x143f17,
+            houseCostFV: _0x4a30f5,
+            profitSIPInvest: _0x34c43c,
+            monthlyRent: _0x5010a3,
           } = calculateEMIVersusSIP(
-            Number(principal.value),
-            Number(personalFunding.value),
-            Number(rateOfInterest.value) / 100,
-            Number(timePeriod.value),
-            Number(inflationRate.value) / 100
+            Number(_0x570458[_0x30061e(0x1db)]),
+            Number(_0x27007a[_0x30061e(0x1db)]),
+            Number(_0x424a61[_0x30061e(0x1db)]) / 0x64,
+            Number(_0x15ff81["value"]),
+            Number(_0x428430["value"]) / 0x64
           );
-          snapshotDiv.style = 'display:"block"';
-          resultHeader = document.getElementById("resultHeader");
-          resultHeader.innerHTML =
-            '<h5 class="leading-none text-center text-3xl mb-4 font-extrabold text-gray-900 dark:text-white pb-1">House Purchase Vs SIP Investment</h5>';
-          showOutput = document.getElementById("showOutput");
-          showOutput.innerHTML =
-            '<div class="max-w-full relative overflow-x-auto shadow-md sm:rounded-lg">' +
-            '<table class="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">' +
-            '<thead class="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">' +
-            '<tr><th scope="col" class="px-6 py-3">Loan EMI Amount' +
-            "</th>" +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(emiAmt)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3">Total Loan Payment Amount</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(totalLoanPayment)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3">Capital Paid In Loan</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(bankFunding)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3">Interest Paid In Loan</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(loanInterestPaid) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3 text-red-500">Consider Present House Value For Rent</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(principal.value)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3 text-red-500">Monthly Rent At 3% Rental Yield</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(monthlyRent)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3 text-red-500">SIP Amount After EMI</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(emiPaymentBalance)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3">Assumed SIP Growth Rate</th>' +
-            '<th scope="col" class="px-6 py-3">12%</th>' +
-            '</tr><tr><th scope="col" class="px-6 py-3">Future Value Of SIP Investment</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(sipInvestFV)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3">Future House Valuation With Inflation</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(houseCostFV)) +
-            "</th>" +
-            '</tr><tr><th scope="col" class="px-6 py-3 text-red-500">Profit In SIP Investment Versus EMI</th>' +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(profitSIPInvest)) +
-            "</th>" +
-            "</tr></thead></table></div>";
-          scrollToElement("resultHeader");
+          (_0x4bbbad[_0x30061e(0x201)] = _0x30061e(0x1cd)),
+            (_0x4bb145 = document[_0x30061e(0x216)](_0x30061e(0x213))),
+            (_0x4bb145[_0x30061e(0x1eb)] = _0x30061e(0x1cb)),
+            (showOutput = document[_0x30061e(0x216)](_0x30061e(0x21b))),
+            (showOutput["innerHTML"] =
+              _0x30061e(0x204) +
+              "<table\x20class=\x22w-full\x20text-lg\x20text-left\x20rtl:text-right\x20text-gray-500\x20dark:text-gray-400\x22>" +
+              _0x30061e(0x20f) +
+              _0x30061e(0x214) +
+              "</th>" +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)](_0x30061e(0x1ea))[_0x30061e(0x1c7)](
+                Math["round"](_0x4b6af1)
+              ) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x203) +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)](_0x30061e(0x1ea))["format"](
+                Math[_0x30061e(0x1fd)](_0x2953e4)
+              ) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x1ee) +
+              "<th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>\x20₹" +
+              Intl["NumberFormat"](_0x30061e(0x1ea))[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x57fdac)
+              ) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x1e1) +
+              "<th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>\x20₹" +
+              Intl[_0x30061e(0x1dc)]("en-IN")[_0x30061e(0x1c7)](_0x24f3ba) +
+              _0x30061e(0x1d8) +
+              "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x20text-red-500\x22>Consider\x20Present\x20House\x20Value\x20For\x20Rent</th>" +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)]("en-IN")[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x570458[_0x30061e(0x1db)])
+              ) +
+              _0x30061e(0x1d8) +
+              "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x20text-red-500\x22>Monthly\x20Rent\x20At\x203%\x20Rental\x20Yield</th>" +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)]("en-IN")[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x5010a3)
+              ) +
+              _0x30061e(0x1d8) +
+              "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x20text-red-500\x22>SIP\x20Amount\x20After\x20EMI</th>" +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)]("en-IN")["format"](
+                Math["round"](_0x2084ff)
+              ) +
+              _0x30061e(0x1d8) +
+              "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Assumed\x20SIP\x20Growth\x20Rate</th>" +
+              _0x30061e(0x1ca) +
+              "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Future\x20Value\x20Of\x20SIP\x20Investment</th>" +
+              _0x30061e(0x20e) +
+              Intl["NumberFormat"]("en-IN")[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x143f17)
+              ) +
+              "</th>" +
+              "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Future\x20House\x20Valuation\x20With\x20Inflation</th>" +
+              _0x30061e(0x20e) +
+              Intl["NumberFormat"]("en-IN")[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x4a30f5)
+              ) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x1c8) +
+              _0x30061e(0x20e) +
+              Intl["NumberFormat"](_0x30061e(0x1ea))[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x34c43c)
+              ) +
+              "</th>" +
+              _0x30061e(0x1d7)),
+            scrollToElement(_0x30061e(0x213));
         }
-      } else {
-        explainPara.innerText =
-          "Please fill in values for loan rate, loan period, housing cost, personal contribution and inflation rate to calculate SIP Versus Housing Return";
-        modalBtn.click();
-      }
+      } else
+        (explainPara[_0x30061e(0x215)] = _0x30061e(0x1ef)),
+          modalBtn[_0x30061e(0x1dd)]();
       break;
-    case "humanLifeBtn":
-      e.preventDefault();
-      currentIncome = document.getElementById("currentIncome");
-      investGrowthRate = document.getElementById("investGrowthRate");
-      incomeIncrementRate = document.getElementById("incomeIncrementRate");
-      timePeriod = document.getElementById("timePeriod");
-      snapshotDiv = document.getElementById("snapshotDiv");
+    case _0x30061e(0x1d6):
+      _0x1f3221[_0x30061e(0x1c3)](),
+        (_0x34977d = document["getElementById"](_0x30061e(0x1f5))),
+        (_0x3c2558 = document["getElementById"](_0x30061e(0x1c4))),
+        (_0x1d27f2 = document[_0x30061e(0x216)](_0x30061e(0x20b))),
+        (_0x15ff81 = document["getElementById"](_0x30061e(0x21a))),
+        (_0x4bbbad = document[_0x30061e(0x216)]("snapshotDiv"));
       if (
-        currentIncome.value !== "" &&
-        investGrowthRate.value !== "" &&
-        incomeIncrementRate.value !== "" &&
-        timePeriod.value !== ""
+        _0x34977d[_0x30061e(0x1db)] !== "" &&
+        _0x3c2558[_0x30061e(0x1db)] !== "" &&
+        _0x1d27f2[_0x30061e(0x1db)] !== "" &&
+        _0x15ff81[_0x30061e(0x1db)] !== ""
       ) {
         if (
           !(
-            isNotNumeric(currentIncome.value) &&
-            isNotNumeric(investGrowthRate.value) &&
-            isNotNumeric(incomeIncrementRate.value) &&
-            isNotNumeric(timePeriod.value)
+            isNotNumeric(_0x34977d[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x3c2558[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x1d27f2["value"]) &&
+            isNotNumeric(_0x15ff81[_0x30061e(0x1db)])
           )
-        ) {
-          explainPara.innerText =
-            "Please enter only numeric values for current income, investment growth rate, income increment rate and time period to calculate Human Life Value For Insurance";
-          modalBtn.click();
-        } else {
-          let { reqdCorpus } = humanLifeMethod(
-            Number(currentIncome.value),
-            Number(investGrowthRate.value) / 100,
-            Number(incomeIncrementRate.value) / 100,
-            Number(timePeriod.value)
+        )
+          (explainPara[_0x30061e(0x215)] = _0x30061e(0x1f2)),
+            modalBtn["click"]();
+        else {
+          let { reqdCorpus: _0x37a5a6 } = humanLifeMethod(
+            Number(_0x34977d[_0x30061e(0x1db)]),
+            Number(_0x3c2558["value"]) / 0x64,
+            Number(_0x1d27f2["value"]) / 0x64,
+            Number(_0x15ff81[_0x30061e(0x1db)])
           );
-          snapshotDiv.style = 'display:"block"';
-          resultHeader = document.getElementById("resultHeader");
-          resultHeader.innerHTML =
-            '<h5 class="leading-none text-center text-3xl mb-4 font-extrabold text-gray-900 dark:text-white pb-1">Human Life Insurance Amount Results</h5>';
-          showOutput = document.getElementById("showOutput");
-          showOutput.innerHTML =
-            '<div class="max-w-full relative overflow-x-auto shadow-md sm:rounded-lg">' +
-            '<table class="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">' +
-            '<thead class="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">' +
-            '<tr><th scope="col" class="px-6 py-3">Insurance Corpus Required' +
-            "</th>" +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(reqdCorpus)) +
-            "</th>" +
-            "</tr></thead></table></div>";
-          scrollToElement("resultHeader");
+          (_0x4bbbad["style"] = _0x30061e(0x1cd)),
+            (_0x4bb145 = document[_0x30061e(0x216)](_0x30061e(0x213))),
+            (_0x4bb145[_0x30061e(0x1eb)] = _0x30061e(0x1e3)),
+            (showOutput = document[_0x30061e(0x216)]("showOutput")),
+            (showOutput[_0x30061e(0x1eb)] =
+              _0x30061e(0x204) +
+              _0x30061e(0x1c9) +
+              _0x30061e(0x20f) +
+              _0x30061e(0x209) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)]("en-IN")[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x37a5a6)
+              ) +
+              _0x30061e(0x1d8) +
+              "</tr></thead></table></div>"),
+            scrollToElement(_0x30061e(0x213));
         }
-      } else {
-        explainPara.innerText =
-          "Please fill in values for current income, investment growth rate, income increment rate and time period to calculate Human Life Value For Insurance";
-        modalBtn.click();
-      }
+      } else
+        (explainPara["innerText"] = _0x30061e(0x1c6)),
+          modalBtn[_0x30061e(0x1dd)]();
       break;
     case "needApproachBtn":
-      e.preventDefault();
-      currentIncome = document.getElementById("currentIncome");
-      investGrowthRate = document.getElementById("investGrowthRate");
-      incomeIncrementRate = document.getElementById("incomeIncrementRate");
-      timePeriod = document.getElementById("timePeriod");
-      snapshotDiv = document.getElementById("snapshotDiv");
-      let outstandingLoanAmt = document.getElementById("outstandingLoanAmt");
-      let childEducationLiability = document.getElementById(
-        "childEducationLiability"
-      );
-      let marriageIncidentalLiability = document.getElementById(
-        "marriageIncidentalLiability"
-      );
-      let deductInsurance = document.getElementById("deductInsurance");
-      let currentInvestBalance = document.getElementById(
-        "currentInvestBalance"
-      );
+      _0x1f3221[_0x30061e(0x1c3)](),
+        (_0x34977d = document["getElementById"](_0x30061e(0x1f5))),
+        (_0x3c2558 = document[_0x30061e(0x216)](_0x30061e(0x1c4))),
+        (_0x1d27f2 = document[_0x30061e(0x216)](_0x30061e(0x20b))),
+        (_0x15ff81 = document[_0x30061e(0x216)]("timePeriod")),
+        (_0x4bbbad = document[_0x30061e(0x216)](_0x30061e(0x20c)));
+      let _0x39b5b4 = document[_0x30061e(0x216)](_0x30061e(0x1ce)),
+        _0x335828 = document[_0x30061e(0x216)](_0x30061e(0x1ed)),
+        _0x9446e0 = document[_0x30061e(0x216)](_0x30061e(0x1e7)),
+        _0x36ec12 = document[_0x30061e(0x216)]("deductInsurance"),
+        _0xabdb3 = document["getElementById"](_0x30061e(0x206));
       if (
-        currentIncome.value !== "" &&
-        investGrowthRate.value !== "" &&
-        incomeIncrementRate.value !== "" &&
-        timePeriod.value !== "" &&
-        outstandingLoanAmt.value !== "" &&
-        childEducationLiability.value !== "" &&
-        marriageIncidentalLiability.value !== "" &&
-        deductInsurance.value !== "" &&
-        currentInvestBalance.value !== ""
+        _0x34977d[_0x30061e(0x1db)] !== "" &&
+        _0x3c2558[_0x30061e(0x1db)] !== "" &&
+        _0x1d27f2[_0x30061e(0x1db)] !== "" &&
+        _0x15ff81["value"] !== "" &&
+        _0x39b5b4["value"] !== "" &&
+        _0x335828[_0x30061e(0x1db)] !== "" &&
+        _0x9446e0[_0x30061e(0x1db)] !== "" &&
+        _0x36ec12[_0x30061e(0x1db)] !== "" &&
+        _0xabdb3["value"] !== ""
       ) {
         if (
           !(
-            isNotNumeric(currentIncome.value) &&
-            isNotNumeric(investGrowthRate.value) &&
-            isNotNumeric(incomeIncrementRate.value) &&
-            isNotNumeric(timePeriod.value) &&
-            isNotNumeric(outstandingLoanAmt.value) &&
-            isNotNumeric(childEducationLiability.value) &&
-            isNotNumeric(marriageIncidentalLiability.value) &&
-            isNotNumeric(deductInsurance.value) &&
-            isNotNumeric(currentInvestBalance.value)
+            isNotNumeric(_0x34977d[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x3c2558[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x1d27f2[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x15ff81[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x39b5b4["value"]) &&
+            isNotNumeric(_0x335828[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x9446e0[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x36ec12["value"]) &&
+            isNotNumeric(_0xabdb3[_0x30061e(0x1db)])
           )
-        ) {
-          explainPara.innerText =
-            "Please enter only numeric values for current income, investment growth rate, income increment rate, time period, outstanding loan amount, children education liability, marriage incidental liability, available insurance deductible and current investment balance to calculate Needs Based Value For Insurance";
-          modalBtn.click();
-        } else {
-          let { reqdCorpus, additionReqdCorpus } = needBasedApproach(
-            Number(currentIncome.value),
-            Number(investGrowthRate.value) / 100,
-            Number(incomeIncrementRate.value) / 100,
-            Number(timePeriod.value),
-            Number(outstandingLoanAmt.value),
-            Number(childEducationLiability.value),
-            Number(marriageIncidentalLiability.value),
-            Number(deductInsurance.value),
-            Number(currentInvestBalance.value)
-          );
-          snapshotDiv.style = 'display:"block"';
-          resultHeader = document.getElementById("resultHeader");
-          resultHeader.innerHTML =
-            '<h5 class="leading-none text-center text-3xl mb-4 font-extrabold text-gray-900 dark:text-white pb-1">Human Life Insurance Amount Results</h5>';
-          showOutput = document.getElementById("showOutput");
-          showOutput.innerHTML =
-            '<div class="max-w-full relative overflow-x-auto shadow-md sm:rounded-lg">' +
-            '<table class="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">' +
-            '<thead class="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">' +
-            '<tr><th scope="col" class="px-6 py-3">Insurance Corpus Required (As Per Human Life Value Method)' +
-            "</th>" +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(reqdCorpus)) +
-            "</th></tr>" +
-            '<tr><th scope="col" class="px-6 py-3">Insurance Corpus Required (As Per Needs-Based Approach)' +
-            "</th>" +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(additionReqdCorpus)) +
-            "</th>" +
-            "</tr></thead></table></div>";
-          scrollToElement("resultHeader");
+        )
+          (explainPara[_0x30061e(0x215)] = _0x30061e(0x1d3)),
+            modalBtn["click"]();
+        else {
+          let { reqdCorpus: _0xc4bbc9, additionReqdCorpus: _0xc023e0 } =
+            needBasedApproach(
+              Number(_0x34977d[_0x30061e(0x1db)]),
+              Number(_0x3c2558[_0x30061e(0x1db)]) / 0x64,
+              Number(_0x1d27f2[_0x30061e(0x1db)]) / 0x64,
+              Number(_0x15ff81["value"]),
+              Number(_0x39b5b4[_0x30061e(0x1db)]),
+              Number(_0x335828["value"]),
+              Number(_0x9446e0[_0x30061e(0x1db)]),
+              Number(_0x36ec12[_0x30061e(0x1db)]),
+              Number(_0xabdb3["value"])
+            );
+          (_0x4bbbad["style"] = _0x30061e(0x1cd)),
+            (_0x4bb145 = document["getElementById"]("resultHeader")),
+            (_0x4bb145[_0x30061e(0x1eb)] = _0x30061e(0x1e3)),
+            (showOutput = document["getElementById"](_0x30061e(0x21b))),
+            (showOutput[_0x30061e(0x1eb)] =
+              _0x30061e(0x204) +
+              _0x30061e(0x1c9) +
+              _0x30061e(0x20f) +
+              _0x30061e(0x1d9) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)](_0x30061e(0x1ea))["format"](
+                Math[_0x30061e(0x1fd)](_0xc4bbc9)
+              ) +
+              _0x30061e(0x1f6) +
+              "<tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Insurance\x20Corpus\x20Required\x20(As\x20Per\x20Needs-Based\x20Approach)" +
+              "</th>" +
+              _0x30061e(0x20e) +
+              Intl["NumberFormat"](_0x30061e(0x1ea))[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0xc023e0)
+              ) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x1d7)),
+            scrollToElement(_0x30061e(0x213));
         }
-      } else {
-        explainPara.innerText =
-          "Please fill in values for current income, investment growth rate, income increment rate, time period, outstanding loan amount, children education liability, marriage incidental liability, available insurance deductible and current investment balance to calculate Needs Based Value For Insurance";
-        modalBtn.click();
-      }
+      } else
+        (explainPara[_0x30061e(0x215)] = _0x30061e(0x21d)),
+          modalBtn[_0x30061e(0x1dd)]();
       break;
     case "crorepatiClacBtn":
-      e.preventDefault();
-      rateOfInterest = document.getElementById("growthRate");
-      timePeriod = document.getElementById("timePeriod");
-      snapshotDiv = document.getElementById("snapshotDiv");
-      targetAmt = document.getElementById("targetAmtReqd");
+      _0x1f3221["preventDefault"](),
+        (_0x424a61 = document["getElementById"](_0x30061e(0x218))),
+        (_0x15ff81 = document[_0x30061e(0x216)](_0x30061e(0x21a))),
+        (_0x4bbbad = document[_0x30061e(0x216)](_0x30061e(0x20c))),
+        (_0x4fa127 = document["getElementById"]("targetAmtReqd"));
       if (
-        rateOfInterest.value !== "" &&
-        timePeriod.value !== "" &&
-        targetAmt.value !== ""
+        _0x424a61[_0x30061e(0x1db)] !== "" &&
+        _0x15ff81[_0x30061e(0x1db)] !== "" &&
+        _0x4fa127["value"] !== ""
       ) {
         if (
           !(
-            isNotNumeric(rateOfInterest.value) &&
-            isNotNumeric(targetAmt.value) &&
-            isNotNumeric(timePeriod.value)
+            isNotNumeric(_0x424a61["value"]) &&
+            isNotNumeric(_0x4fa127["value"]) &&
+            isNotNumeric(_0x15ff81["value"])
           )
-        ) {
-          explainPara.innerText =
-            "Please enter only numeric values for investment growth rate, target amount, and time period  to calculate target SIP to become a crorepati";
-          modalBtn.click();
-        } else {
-          let pmt = calculatePmt(
-            Number(rateOfInterest.value) / 1200,
-            Number(timePeriod.value) * 12,
-            0,
-            Number(targetAmt.value)
+        )
+          (explainPara["innerText"] = _0x30061e(0x1cc)),
+            modalBtn[_0x30061e(0x1dd)]();
+        else {
+          let _0x3f7beb = calculatePmt(
+            Number(_0x424a61["value"]) / 0x4b0,
+            Number(_0x15ff81[_0x30061e(0x1db)]) * 0xc,
+            0x0,
+            Number(_0x4fa127[_0x30061e(0x1db)])
           );
-          snapshotDiv.style = 'display:"block"';
-          resultHeader = document.getElementById("resultHeader");
-          resultHeader.innerHTML =
-            '<h5 class="leading-none text-center text-3xl mb-4 font-extrabold text-gray-900 dark:text-white pb-1">Target SIP / Plan a Crorepati Target</h5>';
-          showOutput = document.getElementById("showOutput");
-          showOutput.innerHTML =
-            '<div class="max-w-full relative overflow-x-auto shadow-md sm:rounded-lg">' +
-            '<table class="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">' +
-            '<thead class="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">' +
-            '<tr><th scope="col" class="px-6 py-3">Required Target SIP To Become Crorepati' +
-            "</th>" +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(pmt)) +
-            "</th></tr>" +
-            "</thead></table></div>";
-          scrollToElement("resultHeader");
+          (_0x4bbbad[_0x30061e(0x201)] = _0x30061e(0x1cd)),
+            (_0x4bb145 = document[_0x30061e(0x216)](_0x30061e(0x213))),
+            (_0x4bb145[_0x30061e(0x1eb)] = _0x30061e(0x1d5)),
+            (showOutput = document[_0x30061e(0x216)](_0x30061e(0x21b))),
+            (showOutput["innerHTML"] =
+              _0x30061e(0x204) +
+              _0x30061e(0x1c9) +
+              _0x30061e(0x20f) +
+              _0x30061e(0x1e9) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)]("en-IN")[_0x30061e(0x1c7)](
+                Math["round"](_0x3f7beb)
+              ) +
+              "</th></tr>" +
+              _0x30061e(0x207)),
+            scrollToElement(_0x30061e(0x213));
         }
-      } else {
-        explainPara.innerText =
-          "Please fill in values for current income, investment growth rate, income increment rate, time period, outstanding loan amount, children education liability, marriage incidental liability, available insurance deductible and current investment balance to calculate Needs Based Value For Insurance";
-        modalBtn.click();
-      }
+      } else
+        (explainPara["innerText"] = _0x30061e(0x21d)),
+          modalBtn[_0x30061e(0x1dd)]();
       break;
-    case "futureExpenseButton":
-      e.preventDefault();
-      rateOfInterest = document.getElementById("rateOfReturn");
-      timePeriod = document.getElementById("timePeriod");
-      snapshotDiv = document.getElementById("snapshotDiv");
-      principal = document.getElementById("amount");
+    case _0x30061e(0x1d1):
+      _0x1f3221[_0x30061e(0x1c3)](),
+        (_0x424a61 = document["getElementById"](_0x30061e(0x1e6))),
+        (_0x15ff81 = document[_0x30061e(0x216)](_0x30061e(0x21a))),
+        (_0x4bbbad = document[_0x30061e(0x216)](_0x30061e(0x20c))),
+        (_0x570458 = document[_0x30061e(0x216)](_0x30061e(0x21e)));
       if (
-        rateOfInterest.value !== "" &&
-        timePeriod.value !== "" &&
-        principal.value !== ""
+        _0x424a61[_0x30061e(0x1db)] !== "" &&
+        _0x15ff81[_0x30061e(0x1db)] !== "" &&
+        _0x570458[_0x30061e(0x1db)] !== ""
       ) {
         if (
           !(
-            isNotNumeric(rateOfInterest.value) &&
-            isNotNumeric(principal.value) &&
-            isNotNumeric(timePeriod.value)
+            isNotNumeric(_0x424a61["value"]) &&
+            isNotNumeric(_0x570458[_0x30061e(0x1db)]) &&
+            isNotNumeric(_0x15ff81[_0x30061e(0x1db)])
           )
-        ) {
-          explainPara.innerText =
-            "Please enter only numeric values for investment growth rate, target amount, and time period  to calculate target Future Value of Expense";
-          modalBtn.click();
-        } else {
-          let fv = calculateFV(
-            Number(rateOfInterest.value) / 100,
-            Number(timePeriod.value),
-            0,
-            Number(principal.value)
+        )
+          (explainPara[_0x30061e(0x215)] = _0x30061e(0x1f1)),
+            modalBtn["click"]();
+        else {
+          let _0x40b595 = calculateFV(
+            Number(_0x424a61["value"]) / 0x64,
+            Number(_0x15ff81[_0x30061e(0x1db)]),
+            0x0,
+            Number(_0x570458[_0x30061e(0x1db)])
           );
-          const options = {
-            colors: ["#1A56DB", "#4CAF50"], // Blue, Green
+          const _0x495cf4 = {
+            colors: [_0x30061e(0x1fa), "#4CAF50"],
             series: [
               {
-                name: "Present Value of Expense",
-                data: [Math.round(principal.value), 0], // Only two values
+                name: _0x30061e(0x1e0),
+                data: [Math["round"](_0x570458[_0x30061e(0x1db)]), 0x0],
               },
-              {
-                name: "Future Value of Expense",
-                data: [0, Math.round(fv)], // Only two values
-              },
+              { name: _0x30061e(0x1e4), data: [0x0, Math["round"](_0x40b595)] },
             ],
             chart: {
               type: "bar",
-              height: "320px",
-              width: "200px",
-              fontFamily: "Inter, sans-serif",
-              toolbar: {
-                show: false,
-              },
+              height: _0x30061e(0x20a),
+              width: _0x30061e(0x1f4),
+              fontFamily: "Inter,\x20sans-serif",
+              toolbar: { show: ![] },
             },
             plotOptions: {
               bar: {
-                horizontal: false,
-                columnWidth: "110%",
-                borderRadius: 8,
+                horizontal: ![],
+                columnWidth: _0x30061e(0x1f3),
+                borderRadius: 0x8,
               },
             },
             tooltip: {
-              shared: true,
-              intersect: false,
-              style: {
-                fontFamily: "Inter, sans-serif",
-              },
+              shared: !![],
+              intersect: ![],
+              style: { fontFamily: _0x30061e(0x219) },
             },
             states: {
-              hover: {
-                filter: {
-                  type: "darken",
-                  value: 1,
-                },
-              },
+              hover: { filter: { type: _0x30061e(0x20d), value: 0x1 } },
             },
-            stroke: {
-              show: true,
-              width: 0,
-              colors: ["transparent"],
-            },
+            stroke: { show: !![], width: 0x0, colors: [_0x30061e(0x1c5)] },
             grid: {
-              show: false,
-              strokeDashArray: 4,
-              padding: {
-                left: 2,
-                right: 2,
-                top: -14,
-              },
+              show: ![],
+              strokeDashArray: 0x4,
+              padding: { left: 0x2, right: 0x2, top: -0xe },
             },
             dataLabels: {
-              enabled: false,
-              offsetY: -20,
+              enabled: ![],
+              offsetY: -0x14,
               style: {
-                fontSize: "12px",
-                fontWeight: "bold",
+                fontSize: _0x30061e(0x1ff),
+                fontWeight: _0x30061e(0x1f7),
                 colors: ["#fff"],
               },
             },
             legend: {
-              position: "bottom", // Align legends at the bottom
-              offsetY: 10, // Adjust vertical offset if needed
-              itemMargin: {
-                horizontal: 5, // Reduce spacing between legend items
-              },
+              position: _0x30061e(0x1fb),
+              offsetY: 0xa,
+              itemMargin: { horizontal: 0x5 },
             },
             xaxis: {
-              categories: [Number(principal.value) + "", Number(fv) + ""], // Only two categories
+              categories: [
+                Number(_0x570458[_0x30061e(0x1db)]) + "",
+                Number(_0x40b595) + "",
+              ],
               labels: {
-                show: false,
+                show: ![],
                 style: {
-                  fontFamily: "Inter, sans-serif",
-                  cssClass:
-                    "text-xs font-normal fill-gray-800 dark:fill-gray-400",
+                  fontFamily: "Inter,\x20sans-serif",
+                  cssClass: _0x30061e(0x1ec),
                 },
               },
-              axisBorder: {
-                show: false,
-              },
-              axisTicks: {
-                show: false,
-              },
+              axisBorder: { show: ![] },
+              axisTicks: { show: ![] },
             },
-            yaxis: {
-              show: false,
-            },
-            fill: {
-              opacity: 1,
-            },
+            yaxis: { show: ![] },
+            fill: { opacity: 0x1 },
           };
-
           if (
-            document.getElementById("column-chart") &&
-            typeof ApexCharts !== "undefined"
+            document[_0x30061e(0x216)](_0x30061e(0x1da)) &&
+            typeof ApexCharts !== _0x30061e(0x1df)
           ) {
-            const chart = new ApexCharts(
-              document.getElementById("column-chart"),
-              options
+            const _0x3859ec = new ApexCharts(
+              document[_0x30061e(0x216)](_0x30061e(0x1da)),
+              _0x495cf4
             );
-            chart.render();
+            _0x3859ec[_0x30061e(0x1d2)]();
           }
-          resultHeader = document.getElementById("resultHeader");
-          resultHeader.innerHTML =
-            '<h5 class="leading-none text-center text-3xl mb-4 font-extrabold text-gray-900 dark:text-white pb-1">Future Value of Expense</h5>';
-          showOutput = document.getElementById("showOutput");
-          showOutput.innerHTML =
-            '<div class="max-w-full relative overflow-x-auto shadow-md sm:rounded-lg">' +
-            '<table class="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">' +
-            '<thead class="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">' +
-            '<tr><th scope="col" class="px-6 py-3">Present Value of Expense' +
-            "</th>" +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(principal.value)) +
-            "</th></tr>" +
-            '<tr><th scope="col" class="px-6 py-3">Future Value of Expense' +
-            "</th>" +
-            '<th scope="col" class="px-6 py-3"> ₹' +
-            Intl.NumberFormat("en-IN").format(Math.round(fv)) +
-            "</th></tr>" +
-            "</thead></table></div>";
-          scrollToElement("resultHeader");
+          (_0x4bb145 = document[_0x30061e(0x216)](_0x30061e(0x213))),
+            (_0x4bb145[_0x30061e(0x1eb)] =
+              "<h5\x20class=\x22leading-none\x20text-center\x20text-3xl\x20mb-4\x20font-extrabold\x20text-gray-900\x20dark:text-white\x20pb-1\x22>Future\x20Value\x20of\x20Expense</h5>"),
+            (showOutput = document[_0x30061e(0x216)]("showOutput")),
+            (showOutput[_0x30061e(0x1eb)] =
+              _0x30061e(0x204) +
+              _0x30061e(0x1c9) +
+              _0x30061e(0x20f) +
+              "<tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Present\x20Value\x20of\x20Expense" +
+              "</th>" +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)](_0x30061e(0x1ea))[_0x30061e(0x1c7)](
+                Math["round"](_0x570458["value"])
+              ) +
+              _0x30061e(0x1f6) +
+              _0x30061e(0x1e8) +
+              _0x30061e(0x1d8) +
+              _0x30061e(0x20e) +
+              Intl[_0x30061e(0x1dc)](_0x30061e(0x1ea))[_0x30061e(0x1c7)](
+                Math[_0x30061e(0x1fd)](_0x40b595)
+              ) +
+              _0x30061e(0x1f6) +
+              _0x30061e(0x207)),
+            scrollToElement("resultHeader");
         }
-      } else {
-        explainPara.innerText =
-          "Please fill in values for current income, investment growth rate, income increment rate, time period, outstanding loan amount, children education liability, marriage incidental liability, available insurance deductible and current investment balance to calculate Needs Based Value For Insurance";
-        modalBtn.click();
-      }
+      } else
+        (explainPara["innerText"] = _0x30061e(0x21d)),
+          modalBtn[_0x30061e(0x1dd)]();
       break;
     default:
       break;
   }
 });
+function _0x5c45() {
+  const _0x1de605 = [
+    "<th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>12%</th>",
+    "<h5\x20class=\x22leading-none\x20text-center\x20text-3xl\x20mb-4\x20font-extrabold\x20text-gray-900\x20dark:text-white\x20pb-1\x22>House\x20Purchase\x20Vs\x20SIP\x20Investment</h5>",
+    "Please\x20enter\x20only\x20numeric\x20values\x20for\x20investment\x20growth\x20rate,\x20target\x20amount,\x20and\x20time\x20period\x20\x20to\x20calculate\x20target\x20SIP\x20to\x20become\x20a\x20crorepati",
+    "display:\x22block\x22",
+    "outstandingLoanAmt",
+    "138243XTaIJI",
+    "700440HhFifW",
+    "futureExpenseButton",
+    "render",
+    "Please\x20enter\x20only\x20numeric\x20values\x20for\x20current\x20income,\x20investment\x20growth\x20rate,\x20income\x20increment\x20rate,\x20time\x20period,\x20outstanding\x20loan\x20amount,\x20children\x20education\x20liability,\x20marriage\x20incidental\x20liability,\x20available\x20insurance\x20deductible\x20and\x20current\x20investment\x20balance\x20to\x20calculate\x20Needs\x20Based\x20Value\x20For\x20Insurance",
+    "target",
+    "<h5\x20class=\x22leading-none\x20text-center\x20text-3xl\x20mb-4\x20font-extrabold\x20text-gray-900\x20dark:text-white\x20pb-1\x22>Target\x20SIP\x20/\x20Plan\x20a\x20Crorepati\x20Target</h5>",
+    "humanLifeBtn",
+    "</tr></thead></table></div>",
+    "</th>",
+    "<tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Insurance\x20Corpus\x20Required\x20(As\x20Per\x20Human\x20Life\x20Value\x20Method)",
+    "column-chart",
+    "value",
+    "NumberFormat",
+    "click",
+    "houseCost",
+    "undefined",
+    "Present\x20Value\x20of\x20Expense",
+    "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Interest\x20Paid\x20In\x20Loan</th>",
+    "5872BOUqnm",
+    "<h5\x20class=\x22leading-none\x20text-center\x20text-3xl\x20mb-4\x20font-extrabold\x20text-gray-900\x20dark:text-white\x20pb-1\x22>Human\x20Life\x20Insurance\x20Amount\x20Results</h5>",
+    "Future\x20Value\x20of\x20Expense",
+    "inflationRate",
+    "rateOfReturn",
+    "marriageIncidentalLiability",
+    "<tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Future\x20Value\x20of\x20Expense",
+    "<tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Required\x20Target\x20SIP\x20To\x20Become\x20Crorepati",
+    "en-IN",
+    "innerHTML",
+    "text-xs\x20font-normal\x20fill-gray-800\x20dark:fill-gray-400",
+    "childEducationLiability",
+    "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Capital\x20Paid\x20In\x20Loan</th>",
+    "Please\x20fill\x20in\x20values\x20for\x20loan\x20rate,\x20loan\x20period,\x20housing\x20cost,\x20personal\x20contribution\x20and\x20inflation\x20rate\x20to\x20calculate\x20SIP\x20Versus\x20Housing\x20Return",
+    "8gtIfQR",
+    "Please\x20enter\x20only\x20numeric\x20values\x20for\x20investment\x20growth\x20rate,\x20target\x20amount,\x20and\x20time\x20period\x20\x20to\x20calculate\x20target\x20Future\x20Value\x20of\x20Expense",
+    "Please\x20enter\x20only\x20numeric\x20values\x20for\x20current\x20income,\x20investment\x20growth\x20rate,\x20income\x20increment\x20rate\x20and\x20time\x20period\x20to\x20calculate\x20Human\x20Life\x20Value\x20For\x20Insurance",
+    "110%",
+    "200px",
+    "currentIncome",
+    "</th></tr>",
+    "bold",
+    "selfFunding",
+    "getBoundingClientRect",
+    "#1A56DB",
+    "bottom",
+    "919562yussUd",
+    "round",
+    "pageYOffset",
+    "12px",
+    "2115OMkRAl",
+    "style",
+    "1ozsZbH",
+    "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Total\x20Loan\x20Payment\x20Amount</th>",
+    "<div\x20class=\x22max-w-full\x20relative\x20overflow-x-auto\x20shadow-md\x20sm:rounded-lg\x22>",
+    "emiSipBtn",
+    "currentInvestBalance",
+    "</thead></table></div>",
+    "375900QorWRx",
+    "<tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Insurance\x20Corpus\x20Required",
+    "320px",
+    "incomeIncrementRate",
+    "snapshotDiv",
+    "darken",
+    "<th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>\x20₹",
+    "<thead\x20class=\x22text-md\x20text-gray-700\x20bg-gray-50\x20dark:bg-gray-700\x20dark:text-gray-400\x22>",
+    "top",
+    "loanPeriod",
+    "scrollTo",
+    "resultHeader",
+    "<tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x22>Loan\x20EMI\x20Amount",
+    "innerText",
+    "getElementById",
+    "8749070qSgCsY",
+    "growthRate",
+    "Inter,\x20sans-serif",
+    "timePeriod",
+    "showOutput",
+    "smooth",
+    "Please\x20fill\x20in\x20values\x20for\x20current\x20income,\x20investment\x20growth\x20rate,\x20income\x20increment\x20rate,\x20time\x20period,\x20outstanding\x20loan\x20amount,\x20children\x20education\x20liability,\x20marriage\x20incidental\x20liability,\x20available\x20insurance\x20deductible\x20and\x20current\x20investment\x20balance\x20to\x20calculate\x20Needs\x20Based\x20Value\x20For\x20Insurance",
+    "amount",
+    "1111955ttRJUx",
+    "preventDefault",
+    "investGrowthRate",
+    "transparent",
+    "Please\x20fill\x20in\x20values\x20for\x20current\x20income,\x20investment\x20growth\x20rate,\x20income\x20increment\x20rate\x20and\x20time\x20period\x20to\x20calculate\x20Human\x20Life\x20Value\x20For\x20Insurance",
+    "format",
+    "</tr><tr><th\x20scope=\x22col\x22\x20class=\x22px-6\x20py-3\x20text-red-500\x22>Profit\x20In\x20SIP\x20Investment\x20Versus\x20EMI</th>",
+    "<table\x20class=\x22w-full\x20text-lg\x20text-left\x20rtl:text-right\x20text-gray-500\x20dark:text-gray-400\x22>",
+  ];
+  _0x5c45 = function () {
+    return _0x1de605;
+  };
+  return _0x5c45();
+}

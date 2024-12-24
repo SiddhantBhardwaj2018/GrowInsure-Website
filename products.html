@@ -9,8 +9,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/styles/style.css?id=09122024" />
+    <link rel="icon" href="/images/companyLogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/style.css?id=24122024v2" />
     <!-- Metadata about site -->
 
     <meta
@@ -26,14 +26,14 @@
       property="og:title"
       content="Our Products - Tailored Financial Solutions | GrowInsure "
     />
-    <meta property="og:url" content="https://GrowInsure.com/products.html" />
+    <meta property="og:url" content="https://growinsure.co.in/products.html" />
     <meta
       property="og:description"
       content="Discover our tailored financial products at GrowInsure , including mutual funds, PMS, fixed deposits, and retail loans. Find the right investment solutions to meet your financial goals with expert guidance and support."
     />
     <meta
       property="og:image"
-      content="https://GrowInsure.com/images/companyLogo.png"
+      content="https://growinsure.co.in/images/companyLogo.png"
     />
     <meta
       property="og:site_name"
@@ -122,6 +122,72 @@
               >
             </li>
             <li>
+              <button
+                id="dropdownNavbarLinkResearch"
+                data-dropdown-toggle="dropdownNavbarResearch"
+                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+              >
+                Policy-Holders
+                <svg
+                  class="w-2.5 h-2.5 ms-2.5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 4 4 4-4"
+                  ></path>
+                </svg>
+              </button>
+              <!-- Dropdown menu -->
+              <div
+                id="dropdownNavbarResearch"
+                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-100 dark:bg-gray-700 dark:divide-gray-600"
+                style="
+                  position: absolute;
+                  inset: 0px auto auto 0px;
+                  margin: 0px;
+                  transform: translate(1051px, 58px);
+                "
+                data-popper-placement="bottom"
+              >
+                <ul
+                  class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                  aria-labelledby="dropdownLargeButton"
+                >
+                  <li>
+                    <a
+                      href="/claims-settlement-process.html"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Claims Settlement Process
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/rights-of-policyholders.html"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Rights Of Policy-Holders
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/grievance-redressal-mechanism.html"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Grievance Redressal Mechanism
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
               <a
                 href="/faq.html"
                 aria-current="page"
@@ -149,6 +215,7 @@
         </div>
       </div>
     </nav>
+
     <div>
       <div class="team-members-box">
         <h1
@@ -160,42 +227,6 @@
       </div>
     </div>
     <section
-      id="mutualFunds"
-      class="animate-fade-in mobileService dark:bg-gray-900"
-    >
-      <div
-        class="gap-16 items-center px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:px-6"
-      >
-        <div class="font-light sm:text-lg dark:">
-          <h2
-            class="mb-4 text-3xl tracking-tight font-extrabold dark:text-white"
-          >
-            Mutual Funds
-          </h2>
-          <p style="text-align: justify" class="mb-4">
-            At GrowInsure, we apply our innovative approach to Mutual Funds.
-            Discover a variety of investment opportunities tailored to your
-            financial goals. Whether you're interested in equity or debt funds,
-            we help you choose the optimal mix for your portfolio.
-          </p>
-          <p style="text-align: justify" class="mb-4">
-            Leverage our expertise to confidently navigate the complexities of
-            Mutual Funds, ensuring your investments align seamlessly with your
-            long-term goals.
-          </p>
-        </div>
-        <div class="grid grid-cols gap-4">
-          <img
-            style="width: 65%"
-            class="mt-4 w-full lg:mt-10 rounded-lg position-image-right position-image"
-            src="/images/mutualFunds.jpg"
-            alt="office content 2"
-          />
-        </div>
-      </div>
-    </section>
-
-    <section
       id="Insurance"
       class="animate-fade-in mobileService dark:bg-gray-900"
     >
@@ -206,7 +237,7 @@
           <img
             style="width: 80%"
             class="w-full position-image-left position-image"
-            src="/images/Insurance.jpg"
+            src="/images/carInsurance.png"
             alt="office content 2"
           />
         </div>
@@ -235,121 +266,17 @@
         </div>
       </div>
     </section>
-
-    <section id="PMS" class="animate-fade-in mobileService dark:bg-gray-900">
-      <div
-        class="gap-16 mobileReverse items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:px-6"
-      >
-        <div class="font-light sm:text-lg dark:">
-          <h2
-            class="mb-4 text-3xl tracking-tight font-extrabold dark:text-white"
-          >
-            PMS & AIF
-          </h2>
-          <p style="text-align: justify" class="mb-4">
-            At GrowInsure, we also specialize in Portfolio Management Services
-            (PMS). Enhance your investment strategy with personalized portfolio
-            management tailored to your unique financial objectives and risk
-            profile.
-          </p>
-          <p style="text-align: justify">
-            With our PMS offerings, benefit from professional expertise, active
-            monitoring, and tailored investment solutions designed to optimize
-            returns and effectively mitigate risks.
-          </p>
-        </div>
-        <div class="grid grid-cols gap-4">
-          <img
-            style="width: 100%"
-            class="w-full position-image-right position-image"
-            src="/images/EquityPMS.png"
-            alt="office content 2"
-          />
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="FixedDeposit"
-      class="animate-fade-in mobileService dark:bg-gray-900"
-    >
-      <div
-        class="gap-16 items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:px-6"
-      >
-        <div class="grid grid-cols gap-4">
-          <img
-            class="rounded-lg position-image-right position-image"
-            style="width: 100%"
-            src="/images/fixedDeposit.jpg"
-            alt="office content 2"
-          />
-        </div>
-        <div class="font-light sm:text-lg dark:">
-          <h2
-            class="mb-4 text-3xl tracking-tight font-extrabold dark:text-white"
-          >
-            Fixed Deposit
-          </h2>
-          <p style="text-align: justify" class="mb-4">
-            At GrowInsure, we recognize the importance of stable and secure
-            investments. We offer fixed deposit solutions that ensure a reliable
-            way to grow your savings with confidence and peace of mind.
-          </p>
-          <p style="text-align: justify" class="mb-4">
-            Whether you're saving for short-term goals or diversifying your
-            portfolio, our team at GrowInsure will help you find the ideal fixed
-            deposit solution. Trust us to safeguard your savings and support
-            your long-term financial goals.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="Loan" class="animate-fade-in mobileService dark:bg-gray-900">
-      <div
-        class="gap-16 mobileReverse items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:px-6"
-      >
-        <div class="font-light sm:text-lg dark:">
-          <h2
-            class="mb-4 text-3xl tracking-tight font-extrabold dark:text-white"
-          >
-            Loan
-          </h2>
-          <p style="text-align: justify" class="mb-4">
-            At GrowInsure, we offer customized loan solutions to meet your
-            financial needs. Whether for personal, business, or real estate
-            purposes, our expert team ensures you secure favorable terms and
-            competitive rates.
-          </p>
-          <p style="text-align: justify">
-            We prioritize transparency and client satisfaction, offering ongoing
-            support beyond just securing a loan. With GrowInsure, you gain a
-            trusted partner dedicated to helping you achieve financial stability
-            and growth through well-informed borrowing decisions.
-          </p>
-        </div>
-        <div class="grid grid-cols gap-4">
-          <img
-            style="width: 75%"
-            class="mt-4 w-full lg:mt-10 rounded-lg position-image-right position-image"
-            src="/images/Loan.jpg"
-            alt="office content 2"
-          />
-        </div>
-      </div>
-    </section>
-
     <br />
     <br />
     <footer style="background-color: #050b3a">
       <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://GrowInsure.com/">
+            <a href="https://growinsure.co.in/">
               <img
                 src="/images/companyLogo.png"
                 class="me-3"
-                style="width: 8rem"
+                style="width: 14rem"
                 alt="GrowInsure Logo"
               />
             </a>
@@ -407,7 +334,7 @@
         >
           <span class="text-sm text-center text-gray-400">
             © 2024
-            <a href="https://GrowInsure.com/" class="hover:underline">
+            <a href="https://growinsure.co.in/" class="hover:underline">
               GrowInsure
             </a>
             All Rights Reserved.
@@ -478,6 +405,6 @@
       </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="/scripts/navbarToggle.js?id=09122024"></script>
+    <script src="/scripts/navbarToggle.js?id=24122024v2"></script>
   </body>
 </html>

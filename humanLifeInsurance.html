@@ -9,8 +9,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/styles/style.css?id=09122024" />
+    <link rel="icon" href="/images/companyLogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/style.css?id=24122024v2" />
     <!-- Metadata about site -->
 
     <meta
@@ -131,6 +131,72 @@
               >
             </li>
             <li>
+              <button
+                id="dropdownNavbarLinkResearch"
+                data-dropdown-toggle="dropdownNavbarResearch"
+                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+              >
+                Policy-Holders
+                <svg
+                  class="w-2.5 h-2.5 ms-2.5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 4 4 4-4"
+                  ></path>
+                </svg>
+              </button>
+              <!-- Dropdown menu -->
+              <div
+                id="dropdownNavbarResearch"
+                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-100 dark:bg-gray-700 dark:divide-gray-600"
+                style="
+                  position: absolute;
+                  inset: 0px auto auto 0px;
+                  margin: 0px;
+                  transform: translate(1051px, 58px);
+                "
+                data-popper-placement="bottom"
+              >
+                <ul
+                  class="py-2 text-sm text-gray-700 dark:text-gray-400"
+                  aria-labelledby="dropdownLargeButton"
+                >
+                  <li>
+                    <a
+                      href="/claims-settlement-process.html"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Claims Settlement Process
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/rights-of-policyholders.html"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Rights Of Policy-Holders
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/grievance-redressal-mechanism.html"
+                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Grievance Redressal Mechanism
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
               <a
                 href="/faq.html"
                 aria-current="page"
@@ -158,6 +224,7 @@
         </div>
       </div>
     </nav>
+
     <!-- Modal toggle -->
     <button
       id="modalBtn"
@@ -233,22 +300,20 @@
         </div>
       </div>
     </div>
-    <div class="animate-fade-in">
+    <div class="animate-fade-in" style="margin-top: 5rem;">
       <div class="team-members-box">
-        <br /><br /><br />
         <h1
           class="mt-5 mb-4 text-center heading font-extrabold leading-none tracking-tight text-gray-900 dark:text-white"
         >
           Calculation of Sum Insurance Amount
         </h1>
-        <br /><br />
       </div>
       <div style="margin: 0 5%" class="mobileDiv grid grid-cols-2">
         <div>
           <img
             class="rounded-t-lg planningImg"
             style="
-              width: 50%;
+              width: 70%;
               height: 22rem;
               margin-left: 2rem;
               margin-top: 0 !important;
@@ -340,7 +405,7 @@
               <button
                 type="click"
                 id="humanLifeBtn"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="text-white carousel-button focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Submit
               </button>
@@ -375,7 +440,8 @@
                 <button
                   id="emailReportBtn"
                   type="button"
-                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  style="background-color: #1d4ed8;"
+                  class="text-white research-color focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Email Report
                 </button>
@@ -403,11 +469,11 @@
       <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <a href="https://GrowInsure.com/">
+            <a href="https://growinsure.co.in/">
               <img
                 src="/images/companyLogo.png"
                 class="me-3"
-                style="width: 8rem"
+                style="width: 14rem"
                 alt="GrowInsure Logo"
               />
             </a>
@@ -465,7 +531,7 @@
         >
           <span class="text-sm text-center text-gray-400">
             © 2024
-            <a href="https://GrowInsure.com/" class="hover:underline">
+            <a href="https://growinsure.co.in/" class="hover:underline">
               GrowInsure
             </a>
             All Rights Reserved.
@@ -535,12 +601,13 @@
         </div>
       </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="/scripts/navbarToggle.js?id=24122024v2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="/scripts/navbarToggle.js?id=09122024"></script>
-    <script src="/scripts/mutualFundLogic.js?id=09122024"></script>
-    <script src="/scripts/specialCalculators.js?id=09122024"></script>
-    <script src="/scripts/snapshot.js?id=09122024&value=humanLifeInsurance"></script>
+    <script src="/scripts/navbarToggle.js?id=24122024v2"></script>
+    <script src="/scripts/mutualFundLogic.js?id=24122024v2"></script>
+    <script src="/scripts/specialCalculators.js?id=24122024v2"></script>
+    <script src="/scripts/snapshot.js?id=24122024v2&value=humanLifeInsurance"></script>
   </body>
 </html>

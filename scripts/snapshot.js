@@ -59,7 +59,7 @@ function _0x31e0() {
     "json",
     "455970qxkMsD",
     "SIP\x20Calculation\x20Details",
-    "https://operations.webclass.co.in/api/navCalculator/emailAnalysisReport",
+    "https://operations.webclass.in/api/navCalculator/emailAnalysisReport",
     "table",
     "emergency",
     "house",
